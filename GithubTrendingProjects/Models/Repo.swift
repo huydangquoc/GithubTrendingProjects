@@ -7,10 +7,20 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct Repo {
-  let name: String
-  let starCount: Int
-  let description: String
-  let owner: Owner
+struct Repo: Mappable {
+  var name: String = ""
+  var starCount: Int = 0
+  var description: String = ""
+  var owner: Owner!
+  
+  init?(map: Map) { }
+  
+  mutating func mapping(map: Map) {
+    name        <- map["name"]
+    starCount   <- map["stargazers_count"]
+    description <- map["description"]
+    owner       <- map["owner"]
+  }
 }

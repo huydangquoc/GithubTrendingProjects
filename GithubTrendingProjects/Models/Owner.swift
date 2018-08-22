@@ -7,8 +7,16 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct Owner {
-  let name: String
-  let avatar: String
+struct Owner: Mappable {
+  var name: String = ""
+  var avatar: String = ""
+  
+  init?(map: Map) { }
+  
+  mutating func mapping(map: Map) {
+    name    <- map["login"]
+    avatar  <- map["avatar_url"]
+  }
 }

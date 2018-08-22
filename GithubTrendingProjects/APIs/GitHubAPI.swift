@@ -8,9 +8,26 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
+import ObjectMapper
 
 class GitHubAPI {
   
   class func getTrendingRepos(completion: @escaping ([Repo]?) -> Void) {
+    Alamofire.request(GitHubRouter.trendingRepos)
+      .responseJSON {response in
+        guard response.result.isSuccess,
+          let value = response.result.value else {
+            print("Error while fetching trending repos: \(String(describing: response.result.error))")
+            completion(nil)
+            return
+        }
+        
+        let repos = JSON(value)["items"].array?.map { json in
+          Mapper<Repo>().map(JSON: json.dictionaryObject ?? [:])!
+        }
+        
+        completion(repos)
+    }
   }
 }
