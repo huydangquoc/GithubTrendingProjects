@@ -61,14 +61,62 @@
 		6B502672212D895500321067 /* GithubTrendingProjects */ = {
 			isa = PBXGroup;
 			children = (
-				6B502673212D895500321067 /* AppDelegate.swift */,
-				6B502675212D895500321067 /* ViewController.swift */,
-				6B502677212D895500321067 /* Main.storyboard */,
-				6B50267A212D895600321067 /* Assets.xcassets */,
-				6B50267C212D895600321067 /* LaunchScreen.storyboard */,
-				6B50267F212D895600321067 /* Info.plist */,
+				6B502688212D8BAC00321067 /* APIs */,
+				6B502687212D8BA200321067 /* Controllers */,
+				6B502685212D8B9300321067 /* Models */,
+				6B502689212D8BC000321067 /* Storyboards */,
+				6B50268A212D8BC700321067 /* SupportingFiles */,
+				6B502686212D8B9C00321067 /* Views */,
 			);
 			path = GithubTrendingProjects;
+			sourceTree = "<group>";
+		};
+		6B502685212D8B9300321067 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B502686212D8B9C00321067 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B502687212D8BA200321067 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B502675212D895500321067 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6B502688212D8BAC00321067 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		6B502689212D8BC000321067 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6B50267C212D895600321067 /* LaunchScreen.storyboard */,
+				6B502677212D895500321067 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		6B50268A212D8BC700321067 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6B502673212D895500321067 /* AppDelegate.swift */,
+				6B50267A212D895600321067 /* Assets.xcassets */,
+				6B50267F212D895600321067 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		A1D7A096401F9A73E50E04BC /* Pods */ = {
@@ -348,7 +396,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AA388QFS75;
-				INFOPLIST_FILE = GithubTrendingProjects/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GithubTrendingProjects/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,7 +405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.huydang.GithubTrendingProjects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -367,7 +416,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AA388QFS75;
-				INFOPLIST_FILE = GithubTrendingProjects/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GithubTrendingProjects/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,7 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.huydang.GithubTrendingProjects;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
