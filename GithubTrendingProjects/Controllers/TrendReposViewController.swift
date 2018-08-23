@@ -13,6 +13,7 @@ class TrendReposViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   let searchController = UISearchController(searchResultsController: nil)
+  let viewModel = ViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,14 +34,22 @@ class TrendReposViewController: UIViewController {
     definesPresentationContext = true
     tableView.tableHeaderView = searchController.searchBar
     
-    GitHubAPI.getTrendingRepos { repos in
-      guard let repos =  repos else { return }
-    }
+    // load trending repos
+    loadRepos()
   }
   
   // MARK: - Private instance methods
   
-  func filterContentForSearchText(_ searchText: String) {
+  private func loadRepos() {
+    GitHubAPI.getTrendingRepos { [weak self] repos in
+      guard let repos =  repos else { return }
+      
+      self?.viewModel.set(repos: repos)
+      self?.tableView.reloadData()
+    }
+  }
+  
+  private func filterContentForSearchText(_ searchText: String) {
     // TODO: implement search here
   }
   
@@ -51,16 +60,13 @@ class TrendReposViewController: UIViewController {
 extension TrendReposViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 30
+    return viewModel.numberOfRepos
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RepoViewCell.self)) as! RepoViewCell
     
-    // set dummy data
-    cell.projectNameLabel.text = "Project \(indexPath.row)"
-    cell.starCountLabel.text = "Star: \(indexPath.row)"
-    cell.descriptionLabel.text = "This is a very long text.\nThis is a very long text.\nThis is a very long text.\nThis is a very long text.\nThis is a very long text.\n"
+    viewModel.configCell(cell: cell, at: indexPath.row)
 
     return cell
   }
