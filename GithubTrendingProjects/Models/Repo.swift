@@ -12,12 +12,14 @@ import SwiftyJSON
 struct Repo {
   let name: String
   let starCount: Int
+  let forkCount: Int
   let description: String
   let owner: Owner
   
   init(json: JSON) {
     name = json["name"].stringValue
     starCount = json["stargazers_count"].intValue
+    forkCount = json["forks"].intValue
     description = json["description"].stringValue
     owner = Owner(json: json["owner"])
   }

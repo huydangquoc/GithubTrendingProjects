@@ -81,8 +81,20 @@ extension TrendReposViewController: UITableViewDelegate {
     
     tableView.deselectRow(at: indexPath, animated: true)
     
-    // TODO: show repo detail view
+    // show repo detail view
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    if let repoDetailVC = storyboard.instantiateViewController(withIdentifier: String(describing: RepoDetailViewController.self)) as? RepoDetailViewController {
+      // set repo for view model
+      repoDetailVC.viewModel.repo = viewModel.repo(at: indexPath.row)
+      // set text back button
+      let backItem = UIBarButtonItem()
+      backItem.title = "Back"
+      navigationItem.backBarButtonItem = backItem
+      // push to detail repo view
+      navigationController?.pushViewController(repoDetailVC, animated: true)
+    }
   }
+  
 }
 
 // MARK: - UISearchResultsUpdating Delegate

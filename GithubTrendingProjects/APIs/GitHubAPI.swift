@@ -14,7 +14,7 @@ class GitHubAPI {
   
   class func getTrendingRepos(completion: @escaping ([Repo]?) -> Void) {
     Alamofire.request(GitHubRouter.trendingRepos)
-      .responseJSON {response in
+      .responseJSON { response in
         guard response.result.isSuccess,
           let value = response.result.value else {
             print("Error while fetching trending repos: \(String(describing: response.result.error))")
@@ -27,6 +27,22 @@ class GitHubAPI {
         }
         
         completion(repos)
-    }
+      }
   }
+  
+  class func getReadme(owner: String, repo: String, completion: @escaping (Readme?) -> Void) {
+    Alamofire.request(GitHubRouter.readme(owner, repo))
+      .responseJSON { response in
+        guard response.result.isSuccess,
+          let value = response.result.value else {
+            print("Error while fetching readme: \(String(describing: response.result.error))")
+            completion(nil)
+            return
+        }
+        
+        let readme = Readme(json: JSON(value))
+        completion(readme)
+      }
+  }
+
 }
