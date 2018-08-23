@@ -7,16 +7,14 @@
 //
 
 import Foundation
-import ObjectMapper
+import SwiftyJSON
 
-struct Owner: Mappable {
-  var name: String = ""
-  var avatar: String = ""
+struct Owner {
+  let name: String
+  let avatar: String
   
-  init?(map: Map) { }
-  
-  mutating func mapping(map: Map) {
-    name    <- map["login"]
-    avatar  <- map["avatar_url"]
+  init(json: JSON) {
+    name = json["login"].stringValue
+    avatar = json["avatar_url"].stringValue
   }
 }

@@ -9,7 +9,6 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import ObjectMapper
 
 class GitHubAPI {
   
@@ -24,7 +23,7 @@ class GitHubAPI {
         }
         
         let repos = JSON(value)["items"].array?.map { json in
-          Mapper<Repo>().map(JSON: json.dictionaryObject ?? [:])!
+          Repo(json: json)
         }
         
         completion(repos)

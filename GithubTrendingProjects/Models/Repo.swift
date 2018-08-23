@@ -7,20 +7,18 @@
 //
 
 import Foundation
-import ObjectMapper
+import SwiftyJSON
 
-struct Repo: Mappable {
-  var name: String = ""
-  var starCount: Int = 0
-  var description: String = ""
-  var owner: Owner!
+struct Repo {
+  let name: String
+  let starCount: Int
+  let description: String
+  let owner: Owner
   
-  init?(map: Map) { }
-  
-  mutating func mapping(map: Map) {
-    name        <- map["name"]
-    starCount   <- map["stargazers_count"]
-    description <- map["description"]
-    owner       <- map["owner"]
+  init(json: JSON) {
+    name = json["name"].stringValue
+    starCount = json["stargazers_count"].intValue
+    description = json["description"].stringValue
+    owner = Owner(json: json["owner"])
   }
 }
