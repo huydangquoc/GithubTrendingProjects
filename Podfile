@@ -8,5 +8,6 @@ target 'GithubTrendingProjects' do
   # Pods for GithubTrendingProjects
   pod 'Alamofire', '~> 4.7'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'MarkdownView', '~> 1.3'
 
 end

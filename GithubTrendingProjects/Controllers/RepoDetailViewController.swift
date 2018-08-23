@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import MarkdownView
 
 class RepoDetailViewController: UIViewController {
   
@@ -17,7 +18,8 @@ class RepoDetailViewController: UIViewController {
   @IBOutlet weak var starButton: UIButton!
   @IBOutlet weak var forkButton: UIButton!
   @IBOutlet weak var readmeLabel: UILabel!
-  @IBOutlet weak var readmeTextView: UITextView!
+  @IBOutlet weak var readmeContent: MarkdownView!
+  
   
   let viewModel = ViewModel()
   
@@ -88,7 +90,7 @@ class RepoDetailViewController: UIViewController {
             guard let value = response.result.value else { return }
             let source = String(describing: value)
             // set readme content
-            self?.readmeTextView.text = source
+            self?.readmeContent.load(markdown: source)
           }
         }
       }

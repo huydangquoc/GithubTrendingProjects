@@ -91,21 +91,18 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw5-bv-fRj">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYI-2q-hdd" customClass="MarkdownView" customModule="MarkdownView">
                                         <rect key="frame" x="10" y="79" width="335" height="274"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="bw5-bv-fRj" secondAttribute="trailing" constant="10" id="6HD-EZ-2eW"/>
-                                    <constraint firstItem="bw5-bv-fRj" firstAttribute="top" secondItem="bUE-4J-rjb" secondAttribute="bottom" constant="10" id="6or-Ks-vDU"/>
+                                    <constraint firstAttribute="bottom" secondItem="qYI-2q-hdd" secondAttribute="bottom" constant="10" id="8VV-rH-QZA"/>
+                                    <constraint firstAttribute="trailing" secondItem="qYI-2q-hdd" secondAttribute="trailing" constant="10" id="AHZ-4T-gB1"/>
                                     <constraint firstItem="bUE-4J-rjb" firstAttribute="leading" secondItem="P5F-2l-fIU" secondAttribute="leading" constant="10" id="FhW-96-zfw"/>
-                                    <constraint firstItem="bw5-bv-fRj" firstAttribute="leading" secondItem="P5F-2l-fIU" secondAttribute="leading" constant="10" id="a6v-8J-Yzn"/>
-                                    <constraint firstAttribute="bottom" secondItem="bw5-bv-fRj" secondAttribute="bottom" constant="10" id="jy8-i2-8zG"/>
+                                    <constraint firstItem="qYI-2q-hdd" firstAttribute="top" secondItem="bUE-4J-rjb" secondAttribute="bottom" constant="10" id="NO7-SA-DZ1"/>
+                                    <constraint firstItem="qYI-2q-hdd" firstAttribute="leading" secondItem="P5F-2l-fIU" secondAttribute="leading" constant="10" id="bCa-Jj-Ua3"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Zf-e7-fWP">
@@ -167,8 +164,8 @@
                         <outlet property="descriptionLabel" destination="3dm-9X-VSs" id="xHH-SG-3ci"/>
                         <outlet property="forkButton" destination="s7l-13-fzU" id="5eA-Za-HQC"/>
                         <outlet property="nameLabel" destination="KKb-qA-M6R" id="zeb-Bo-QmK"/>
+                        <outlet property="readmeContent" destination="qYI-2q-hdd" id="g3c-eX-Jpc"/>
                         <outlet property="readmeLabel" destination="bUE-4J-rjb" id="Q3X-Ci-dgR"/>
-                        <outlet property="readmeTextView" destination="bw5-bv-fRj" id="4iw-Xa-Ca6"/>
                         <outlet property="starButton" destination="2f9-5e-HL4" id="7HJ-2W-uRw"/>
                     </connections>
                 </viewController>
