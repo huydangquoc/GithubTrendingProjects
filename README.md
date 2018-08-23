@@ -4,10 +4,10 @@
 
 The following **required** functionality is completed:
 
-- [ ] List trending projects on Github
-- [ ] Tap on one of them, show their details
-- [ ] Follow the design of the project as attached in the email
-- [ ] MVVM- Swift 3.2 or later
+- [x] List trending projects on Github
+- [x] Tap on one of them, show their details
+- [x] Follow the design of the project as attached in the email
+- [x] MVVM- Swift 3.2 or later
 
 <table>
 	<tr>
@@ -24,21 +24,27 @@ The following **optional** features are implemented:
 
 - [ ] ReactiveCocoa 6.0+ (Nice to have)
 
-The following **additional** features are implemented:
-
-- [ ] T.B.D
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src=""/>
+<img src="others/trend-repos.gif"/>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-N/A
+**Trending Repos**: GitHub seems to use their API to write the trending page and don't present it back as a particular API. (for detail, please refer to this [stackoverflow page](https://stackoverflow.com/questions/30525330/how-to-get-list-of-trending-github-repositories-by-github-api))
+
+There is a workaround, by scraping github trending page, as implemented at [huchenme/github-trending-api](https://github.com/huchenme/github-trending-api)
+
+However, to keep it simple as demonstration purpose of this project, I assume that trending repos are:
+
+- repos with most stars
+- created within last 30 days
+
+**Pagination**: Pagination and infiniive loading is not implemented as they are not requriements of project, thus max results is 30 by default.
+
 
 ## License
 

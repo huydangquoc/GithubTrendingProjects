@@ -45,7 +45,7 @@ public enum GitHubRouter: URLRequestConvertible {
   var parameters: [String: Any] {
     switch self {
     case .trendingRepos:
-      // query list of repos created before last 30 days, sort by most stars
+      // query list of repos created within last 30 days, sort by most stars
       let last30Days = Calendar.current.date(byAdding: .day, value: -30, to: Date())
       let q = "created:>\(Constants.dateFormatter.string(from: last30Days!))"
       return ["q" : q, "sort" : "stars", "order" : "desc"]
