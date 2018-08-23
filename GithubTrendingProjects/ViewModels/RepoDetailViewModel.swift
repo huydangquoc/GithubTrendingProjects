@@ -40,7 +40,7 @@ extension RepoDetailViewController {
     }
     
     var readmeURL: String {
-      return readme?.htmlURL ?? ""
+      return readme?.url ?? ""
     }
     
     var readmeFileName: String {

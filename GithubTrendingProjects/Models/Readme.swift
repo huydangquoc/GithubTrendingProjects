@@ -11,10 +11,10 @@ import SwiftyJSON
 
 struct Readme {
   let name: String
-  let htmlURL: String
+  let url: String
   
   init(json: JSON) {
     name = json["name"].stringValue
-    htmlURL = json["html_url"].stringValue
+    url = json["download_url"].stringValue
   }
 }
