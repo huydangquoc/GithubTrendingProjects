@@ -22,10 +22,13 @@ public enum GitHubRouter: URLRequestConvertible {
   }
   
   case trendingRepos
+  case readme(String, String)
   
   var method: HTTPMethod {
     switch self {
     case .trendingRepos:
+      return .get
+    case .readme:
       return .get
     }
   }
@@ -34,6 +37,8 @@ public enum GitHubRouter: URLRequestConvertible {
     switch self {
     case .trendingRepos:
       return "/search/repositories"
+    case .readme(let owner, let repo):
+      return "/repos/\(owner)/\(repo)/readme"
     }
   }
   
@@ -44,6 +49,8 @@ public enum GitHubRouter: URLRequestConvertible {
       let last30Days = Calendar.current.date(byAdding: .day, value: -30, to: Date())
       let q = "created:>\(Constants.dateFormatter.string(from: last30Days!))"
       return ["q" : q, "sort" : "stars", "order" : "desc"]
+    default:
+      return [:]
     }
   }
   

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class RepoDetailViewController: UIViewController {
   
@@ -50,6 +51,47 @@ class RepoDetailViewController: UIViewController {
     forkButton.tintColor = .gray
     
     // populate repo info to view
-    viewModel.configView(view: self)
+    populate()
+  }
+  
+  // MARK: - Private instance methods
+  
+  private func populate() {
+    // populate repo and owner info to view
+    navigationItem.title = viewModel.projectName
+    nameLabel.text = viewModel.ownerName
+    descriptionLabel.text = viewModel.description
+    starButton.setTitle(viewModel.starCount, for: .normal)
+    forkButton.setTitle(viewModel.forkCount, for: .normal)
+    
+    // load avatar
+    if let url = URL(string: viewModel.avatarURL) {
+      Alamofire.request(url).responseData { [weak self] response in
+        if let data = response.data {
+          // set avatar image
+          self?.avatarImageView.image = UIImage(data: data)
+        }
+      }
+    }
+    
+    // load readme
+    GitHubAPI.getReadme(owner: viewModel.ownerName, repo: viewModel.projectName) { [weak self] readme in
+      if let readme = readme {
+        // keep reademe
+        self?.viewModel.readme = readme
+        // set reademe file name
+        self?.readmeLabel.text = self?.viewModel.readmeFileName
+        
+        // populate readme content to view
+        if let url = self?.viewModel.readmeURL {
+          Alamofire.request(url).responseString { response in
+            let htmlSource = String(describing: response.result.value)
+            // set readme content
+            self?.readmeTextView.text = htmlSource
+          }
+        }
+      }
+    }
+    
   }
 }
