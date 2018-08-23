@@ -60,7 +60,8 @@ class TrendReposViewController: UIViewController {
   }
   
   private func filterContentForSearchText(_ searchText: String) {
-    // TODO: implement search here
+    viewModel.applySearch(searchText: searchText)
+    tableView.reloadData()
   }
   
 }
