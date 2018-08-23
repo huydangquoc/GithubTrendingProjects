@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class TrendReposViewController: UIViewController {
 
@@ -19,6 +20,9 @@ class TrendReposViewController: UIViewController {
     super.viewDidLoad()
     
     title = "Github Trends"
+    
+    HUD.dimsBackground = false
+    HUD.allowsInteraction = false
     
     // setup table view
     tableView.delegate = self
@@ -41,8 +45,14 @@ class TrendReposViewController: UIViewController {
   // MARK: - Private instance methods
   
   private func loadRepos() {
+    // show HUD
+    HUD.show(.progress)
+    
     GitHubAPI.getTrendingRepos { [weak self] repos in
       guard let repos =  repos else { return }
+      
+      // hide HUD
+      HUD.hide()
       
       self?.viewModel.set(repos: repos)
       self?.tableView.reloadData()
