@@ -18,11 +18,17 @@ class RepoDetailViewController: UIViewController {
   @IBOutlet weak var readmeLabel: UILabel!
   @IBOutlet weak var readmeTextView: UITextView!
   
+  let viewModel = ViewModel()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // set dummy title
     title = "{Project name here}"
+    
+    // set style avatar
+    avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
+    avatarImageView.clipsToBounds = true
     
     // set style star and fork buttons
     starButton.backgroundColor = .white
@@ -42,5 +48,8 @@ class RepoDetailViewController: UIViewController {
     let tintedForkImage = forkImage?.withRenderingMode(.alwaysTemplate)
     forkButton.setImage(tintedForkImage, for: .normal)
     forkButton.tintColor = .gray
+    
+    // populate repo info to view
+    viewModel.configView(view: self)
   }
 }
