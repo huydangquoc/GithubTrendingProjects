@@ -91,8 +91,8 @@ extension TrendReposViewController: UITableViewDelegate {
       // push to detail repo view
       navigationController?.pushViewController(repoDetailVC, animated: true)
     }
-   
   }
+  
 }
 
 // MARK: - UISearchResultsUpdating Delegate
