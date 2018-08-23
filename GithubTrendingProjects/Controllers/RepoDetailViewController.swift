@@ -85,9 +85,10 @@ class RepoDetailViewController: UIViewController {
         // populate readme content to view
         if let url = self?.viewModel.readmeURL {
           Alamofire.request(url).responseString { response in
-            let htmlSource = String(describing: response.result.value)
+            guard let value = response.result.value else { return }
+            let htmlSource = String(describing: value)
             // set readme content
-            self?.readmeTextView.text = htmlSource
+            self?.readmeTextView.text = htmlSource.htmlToString
           }
         }
       }
