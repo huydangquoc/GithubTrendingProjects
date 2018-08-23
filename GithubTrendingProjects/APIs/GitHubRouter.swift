@@ -12,6 +12,13 @@ public enum GitHubRouter: URLRequestConvertible {
   enum Constants {
     static let baseURLPath = "https://api.github.com"
     static let v3JSON = "application/vnd.github.v3+json"
+    
+    static let dateFormatter: DateFormatter = {
+      let formatter = DateFormatter()
+      formatter.dateFormat = "yyyy-MM-dd"
+      return formatter
+    }()
+
   }
   
   case trendingRepos
@@ -33,8 +40,10 @@ public enum GitHubRouter: URLRequestConvertible {
   var parameters: [String: Any] {
     switch self {
     case .trendingRepos:
-      // TODO: generate last 30 days by Date object
-      return ["q" : "created:>2018-08-01", "sort" : "stars", "order" : "desc"]
+      // query list of repos created before last 30 days, sort by most stars
+      let last30Days = Calendar.current.date(byAdding: .day, value: -30, to: Date())
+      let q = "created:>\(Constants.dateFormatter.string(from: last30Days!))"
+      return ["q" : q, "sort" : "stars", "order" : "desc"]
     }
   }
   
